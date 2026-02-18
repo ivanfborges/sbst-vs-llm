@@ -56,66 +56,95 @@ Comparar **quantidade/qualidade** de testes gerados por EvoSuite vs LLM, usando 
 ### 1) Build e testes (Maven)
 
 #### EvoSuite
+
 cd evosuite
+
 mvn -q test
 
 #### LLM
+
 cd llm
+
 mvn -q test
 
 ### 2) Gerar relatórios de cobertura (JaCoCo)
 (Se o pom.xml já estiver configurado com JaCoCo)
 
 #### EvoSuite
+
 cd evosuite
+
 mvn -q test jacoco:report
 
 #### LLM
+
 cd llm
+
 mvn -q test jacoco:report
 
 Relatório HTML:
+
 target/site/jacoco/index.html
 
 ### 3) Rodar mutation testing (PIT)
 
 #### EvoSuite
+
 cd evosuite
+
 mvn -q pitest:mutationCoverage
 
 #### LLM
+
 cd llm
+
 mvn -q pitest:mutationCoverage
 
 Relatório HTML:
+
 target/pit-reports/<timestamp>/index.html
 
 ## Geração de testes com EvoSuite (branch coverage)
+
 Exemplo de comando (com classpath do Maven build):
 
 java -jar ..\tools\evosuite-1.2.0.jar ^
+
   -class com.example.TriangleClassifier ^
+  
   -projectCP target\classes ^
+  
   -criterion BRANCH ^
+  
   -Dsearch_budget=60
+  
 
 Os testes gerados ficam em evosuite-tests/ e depois podem ser copiados para:
 
 src/test/java/
 
+---
+
 ## Resultados (resumo)
+
 ### LLM
+
 #### JaCoCo
+
 Line coverage: ~94%
+
 Branch coverage: ~94% (varia conforme o relatório)
 
 #### PIT
+
 Mutation coverage: 88% (22/25)
+
 Test strength: 88%
 
 Os números exatos podem ser verificados nos relatórios em reports/ ou em target/....
 
 ### Loop de melhoria (LLM + PIT)
+
 Processo recomendado:
 
 Rodar PIT (mvn pitest:mutationCoverage)
@@ -127,15 +156,25 @@ Criar testes direcionados para matar esses mutantes
 Repetir até estabilizar (ou atingir o objetivo do trabalho)
 
 ### Observações importantes
+
 Avisos de SLF4J e “illegal reflective access” podem aparecer ao usar EvoSuite runtime.
+
 Em geral não impedem a execução, mas podem variar conforme versão do Java.
 
 Evite commitar arquivos temporários do Maven (target/) se não forem necessários.
 
+---
+
 ## Referências
+
 EvoSuite: geração automática de testes com busca (DynaMOSA etc.)
+
 JaCoCo: cobertura de código para Java
+
 PIT: mutation testing para avaliar qualidade de testes
 
+---
+
 ## Autor
+
 Ivan Borges
