@@ -2,51 +2,51 @@
 
 import java.util.Arrays;
 
-<span class="nc" id="L5">public class TriangleClassifier {</span>
+<span class="fc" id="L5">public class TriangleClassifier {</span>
 
-<span class="nc" id="L7">    public enum TriangleType {</span>
-<span class="nc" id="L8">        INVALID,</span>
-<span class="nc" id="L9">        EQUILATERAL,</span>
-<span class="nc" id="L10">        ISOSCELES,</span>
-<span class="nc" id="L11">        SCALENE,</span>
-<span class="nc" id="L12">        RIGHT</span>
+<span class="fc" id="L7">    public enum TriangleType {</span>
+<span class="fc" id="L8">        INVALID,</span>
+<span class="fc" id="L9">        EQUILATERAL,</span>
+<span class="fc" id="L10">        ISOSCELES,</span>
+<span class="fc" id="L11">        SCALENE,</span>
+<span class="fc" id="L12">        RIGHT</span>
     }
 
     public static TriangleType classify(int a, int b, int c) {
         // lados precisam ser positivos
-<span class="nc bnc" id="L17" title="All 6 branches missed.">        if (a &lt;= 0 || b &lt;= 0 || c &lt;= 0) {</span>
-<span class="nc" id="L18">            return TriangleType.INVALID;</span>
+<span class="fc bfc" id="L17" title="All 6 branches covered.">        if (a &lt;= 0 || b &lt;= 0 || c &lt;= 0) {</span>
+<span class="fc" id="L18">            return TriangleType.INVALID;</span>
         }
 
-<span class="nc" id="L21">        int[] s = new int[]{a, b, c};</span>
-<span class="nc" id="L22">        Arrays.sort(s);</span>
-<span class="nc" id="L23">        int x = s[0], y = s[1], z = s[2];</span>
+<span class="fc" id="L21">        int[] s = new int[]{a, b, c};</span>
+<span class="fc" id="L22">        Arrays.sort(s);</span>
+<span class="fc" id="L23">        int x = s[0], y = s[1], z = s[2];</span>
 
         // desigualdade do triângulo
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (x + y &lt;= z) {</span>
-<span class="nc" id="L27">            return TriangleType.INVALID;</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (x + y &lt;= z) {</span>
+<span class="fc" id="L27">            return TriangleType.INVALID;</span>
         }
 
         // equilateral
-<span class="nc bnc" id="L31" title="All 4 branches missed.">        if (x == y &amp;&amp; y == z) {</span>
-<span class="nc" id="L32">            return TriangleType.EQUILATERAL;</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">        if (x == y &amp;&amp; y == z) {</span>
+<span class="fc" id="L32">            return TriangleType.EQUILATERAL;</span>
         }
 
         // verifica triângulo retângulo (usa long pra evitar overflow)
-<span class="nc" id="L36">        long xx = (long) x * x;</span>
-<span class="nc" id="L37">        long yy = (long) y * y;</span>
-<span class="nc" id="L38">        long zz = (long) z * z;</span>
+<span class="fc" id="L36">        long xx = (long) x * x;</span>
+<span class="fc" id="L37">        long yy = (long) y * y;</span>
+<span class="fc" id="L38">        long zz = (long) z * z;</span>
 
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (xx + yy == zz) {</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (xx + yy == zz) {</span>
 <span class="nc" id="L41">            return TriangleType.RIGHT;</span>
         }
 
         // isosceles
-<span class="nc bnc" id="L45" title="All 4 branches missed.">        if (x == y || y == z) {</span>
-<span class="nc" id="L46">            return TriangleType.ISOSCELES;</span>
+<span class="fc bfc" id="L45" title="All 4 branches covered.">        if (x == y || y == z) {</span>
+<span class="fc" id="L46">            return TriangleType.ISOSCELES;</span>
         }
 
-<span class="nc" id="L49">        return TriangleType.SCALENE;</span>
+<span class="fc" id="L49">        return TriangleType.SCALENE;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

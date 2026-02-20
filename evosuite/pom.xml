@@ -72,9 +72,52 @@
             <param>XML</param>
           </outputFormats>
           <timestampedReports>false</timestampedReports>
+
+          <!-- IMPORTANTE: PIT roda em outra JVM (minion), precisa dos mesmos opens -->
+          <jvmArgs>
+            <jvmArg>--add-opens=java.base/java.lang=ALL-UNNAMED</jvmArg>
+            <jvmArg>--add-opens=java.base/java.lang.reflect=ALL-UNNAMED</jvmArg>
+            <jvmArg>--add-opens=java.base/java.util=ALL-UNNAMED</jvmArg>
+            <jvmArg>--add-opens=java.base/java.io=ALL-UNNAMED</jvmArg>
+            <jvmArg>--add-opens=java.base/java.net=ALL-UNNAMED</jvmArg>
+            <jvmArg>--add-opens=java.base/java.nio=ALL-UNNAMED</jvmArg>
+            <jvmArg>--add-opens=java.desktop/java.awt=ALL-UNNAMED</jvmArg>
+          </jvmArgs>
         </configuration>
       </plugin>
 
+      <!-- JaCoCo: maven-surefire-plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*Tests.java</include>
+            <include>**/*TestCase.java</include>
+            <include>**/*ESTest.java</include>
+          </includes>
+
+          <!-- Preserva o argLine do JaCoCo + libera reflexão usada pelo EvoSuite -->
+          <argLine>
+            @{argLine}
+            --add-opens java.base/java.lang=ALL-UNNAMED
+            --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+            --add-opens java.base/java.util=ALL-UNNAMED
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.net=ALL-UNNAMED
+            --add-opens java.base/java.nio=ALL-UNNAMED
+            --add-opens java.desktop/java.awt=ALL-UNNAMED
+          </argLine>
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*Tests.java</include>
+            <include>**/*TestCase.java</include>
+            <include>**/*ESTest.java</include>
+          </includes>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
