@@ -1,0 +1,72 @@
+RESUMO DE MÉTRICAS — EVOSUITE VS LLM
+Experimento: geração de testes para TriangleClassifier
+Data de consolidação: 20/02/2026
+
+1) EVOSUITE (SBST)
+- Classe de teste principal: TriangleClassifier_ESTest
+- Testes executados (Surefire): 10
+- Tempo de execução dos testes: ~1,64 s
+
+JaCoCo:
+- Instruções: 98% (122/124)
+- Branches: 94% (17/18)
+- Linhas: ~96%
+- Métodos: 100% (3/3)
+
+PIT:
+- Line Coverage (classes mutadas): 94% (17/18)
+- Mutações geradas: 25
+- Mutantes mortos: 16
+- Mutantes sobreviventes: 8
+- Mutações sem cobertura: 1
+- Mutation Coverage: 64%
+- Test Strength: 67%
+- Testes executados na análise de mutação: 128
+
+2) LLM (COM REFINAMENTO POR MUTAÇÃO)
+- Classe de teste principal: TriangleClassifierTest
+- Testes executados (Surefire): 15
+- Tempo de execução dos testes: ~0,17 s
+
+JaCoCo:
+- Instruções: 97% (121/124)
+- Branches: 94% (17/18)
+- Linhas: 23/24 (~96%)
+- Métodos: 67% (2/3)
+
+PIT:
+- Line Coverage (classes mutadas): 94% (17/18)
+- Mutações geradas: 25
+- Mutantes mortos: 22
+- Mutantes sobreviventes: 3
+- Mutações sem cobertura: 0
+- Mutation Coverage: 88%
+- Test Strength: 88%
+- Testes executados na análise de mutação: 83
+
+3) COMPARAÇÃO DIRETA
+- Branch coverage: igual (94% para ambos)
+- Instruções: EvoSuite ligeiramente maior (98% vs 97%)
+- Mutation Coverage: LLM superior (88% vs 64%)
+- Test Strength: LLM superior (88% vs 67%)
+- Mutações sem cobertura: LLM melhor (0 vs 1)
+- Execuções no PIT: LLM menor (83 vs 128)
+
+4) GANHOS DO LLM EM RELAÇÃO AO EVOSUITE
+- +24 pontos percentuais em Mutation Coverage
+- +21 pontos percentuais em Test Strength
+- +6 mutantes mortos
+- -45 execuções no PIT
+- Redução aproximada de 35,2% nas execuções do PIT
+
+5) OBSERVAÇÃO SOBRE OS 3 MUTANTES SOBREVIVENTES NO LLM
+- Tipo: ConditionalsBoundaryMutator
+- Linha: 17
+- Condição associada: a <= 0 || b <= 0 || c <= 0
+- Interpretação: fortes indícios de mutantes equivalentes ou quase equivalentes,
+  pois a lógica posterior ainda tende a classificar os casos como INVALID.
+
+6) SÍNTESE FINAL
+- EvoSuite: boa cobertura estrutural e geração automática rápida
+- LLM: melhor efetividade prática, melhor mutation coverage e testes mais legíveis
+- Conclusão: a estratégia LLM + PIT (refinamento iterativo) foi a mais eficaz no estudo de caso

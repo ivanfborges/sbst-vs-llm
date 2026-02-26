@@ -1,0 +1,73 @@
+package com.example;
+
+import static org.junit.Assert.assertSame;
+
+import org.junit.Test;
+
+public class TriangleClassifierTest {
+
+    private static void assertType(TriangleClassifier.TriangleType expected, int a, int b, int c) {
+        assertSame("classify(" + a + "," + b + "," + c + ")", expected, TriangleClassifier.classify(a, b, c));
+    }
+
+    @Test
+    public void classify_shouldReturnInvalid_whenAnySideIsNonPositive_inAnyPosition() {
+        // Zero (cobre cada operando do OR em a<=0 || b<=0 || c<=0)
+        assertType(TriangleClassifier.TriangleType.INVALID, 0, 5, 7);
+        assertType(TriangleClassifier.TriangleType.INVALID, 5, 0, 7);
+        assertType(TriangleClassifier.TriangleType.INVALID, 5, 7, 0);
+
+        // Negativo (cobre cada operando do OR também)
+        assertType(TriangleClassifier.TriangleType.INVALID, -1, 5, 7);
+        assertType(TriangleClassifier.TriangleType.INVALID, 5, -1, 7);
+        assertType(TriangleClassifier.TriangleType.INVALID, 5, 7, -1);
+    }
+
+    @Test
+    public void classify_shouldReturnInvalid_whenTriangleInequalityIsViolated_equalBoundary() {
+        // x + y == z => inválido (borda)
+        assertType(TriangleClassifier.TriangleType.INVALID, 1, 2, 3);
+    }
+
+    @Test
+    public void classify_shouldReturnInvalid_whenTriangleInequalityIsViolated_strictLess() {
+        // x + y < z => inválido
+        assertType(TriangleClassifier.TriangleType.INVALID, 1, 2, 4);
+    }
+
+    @Test
+    public void classify_shouldReturnEquilateral_whenAllSidesEqual() {
+        assertType(TriangleClassifier.TriangleType.EQUILATERAL, 7, 7, 7);
+    }
+
+    @Test
+    public void classify_shouldReturnRight_when345_inAnyOrder() {
+        assertType(TriangleClassifier.TriangleType.RIGHT, 3, 4, 5);
+        assertType(TriangleClassifier.TriangleType.RIGHT, 5, 3, 4);
+    }
+
+    @Test
+    public void classify_shouldReturnRight_when51213_inAnyOrder() {
+        assertType(TriangleClassifier.TriangleType.RIGHT, 5, 12, 13);
+        assertType(TriangleClassifier.TriangleType.RIGHT, 13, 5, 12);
+    }
+
+    @Test
+    public void classify_shouldReturnIsosceles_whenExactlyTwoSidesEqual_andNotRight() {
+        // não ordenado de propósito (valida Arrays.sort)
+        assertType(TriangleClassifier.TriangleType.ISOSCELES, 5, 8, 5);
+    }
+
+    @Test
+    public void classify_shouldReturnScalene_whenAllSidesDifferent_andNotRight() {
+        // não ordenado de propósito (valida Arrays.sort)
+        assertType(TriangleClassifier.TriangleType.SCALENE, 6, 4, 5);
+    }
+
+    @Test
+    public void classify_shouldUseLongForSquares_andStillClassifyCorrectly_forLargeValues() {
+        // Se usasse int para quadrados, 50001^2 estouraria int e poderia afetar o resultado.
+        // Mantém o caminho de "não RIGHT" e "não ISOSCELES" => SCALENE.
+        assertType(TriangleClassifier.TriangleType.SCALENE, 30000, 40000, 50001);
+    }
+}

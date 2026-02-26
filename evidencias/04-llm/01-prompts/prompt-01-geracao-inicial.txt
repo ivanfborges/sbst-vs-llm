@@ -1,0 +1,62 @@
+Você é um engenheiro de QA sênior. Gere testes unitários JUnit 4 para a classe Java abaixo.
+
+REQUISITOS:
+- Maximizar branch coverage; 
+- Cobrir casos de borda: lados <=0, violação da desigualdade do triângulo, casos típicos (equilátero, isósceles, escaleno), casos retângulos (3,4,5; 5,12,13);
+- Usar asserts claros e nomes de testes descritivos;
+- Evitar testes redundantes.
+
+Retorne apenas o código do arquivo TriangleClassifierTest.java no package com.example.
+
+CÓDIGO DA CLASSE:
+package com.example;
+ 
+ import java.util.Arrays;
+ 
+ public class TriangleClassifier {
+ 
+ public enum TriangleType {
+ INVALID,
+ EQUILATERAL,
+ ISOSCELES,
+ SCALENE,
+ RIGHT
+ }
+ 
+ public static TriangleType classify(int a, int b, int c) {
+ // lados precisam ser positivos
+ if (a <= 0 || b <= 0 || c <= 0) {
+ return TriangleType.INVALID;
+ }
+ 
+ int[] s = new int[]{a, b, c};
+ Arrays.sort(s);
+ int x = s[0], y = s[1], z = s[2];
+ 
+ // desigualdade do triângulo
+ if (x + y <= z) {
+ return TriangleType.INVALID;
+ }
+ 
+ // equilateral
+ if (x == y && y == z) {
+ return TriangleType.EQUILATERAL;
+ }
+ 
+ // verifica triângulo retângulo (usa long pra evitar overflow)
+ long xx = (long) x * x;
+ long yy = (long) y * y;
+ long zz = (long) z * z;
+ 
+ if (xx + yy == zz) {
+ return TriangleType.RIGHT;
+ }
+ 
+ // isosceles
+ if (x == y || y == z) {
+ return TriangleType.ISOSCELES;
+ }
+ 
+ return TriangleType.SCALENE;
+ }
+ }

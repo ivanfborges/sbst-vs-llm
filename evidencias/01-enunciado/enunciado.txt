@@ -1,0 +1,90 @@
+TRABALHO DA DISCIPLINA
+
+Título
+Análise Crítica e Experimental de Ferramentas Baseadas em Inteligência Artificial
+no Ciclo de Vida do Desenvolvimento de Software (SDLC)
+
+OBJETIVOS
+
+Geral
+Elaborar um relatório técnico-científico (formato de artigo curto) que
+explore, analise e demonstre o uso prático de ferramentas baseadas em IA
+no contexto da Engenharia de Software, em uma das etapas do ciclo de vida
+de desenvolvimento de software (análise, codificação, testes ou
+manutenção), avaliando seu impacto na produtividade e na qualidade do
+produto final. O trabalho deve abordar, obrigatoriamente, ferramentas ou
+técnicas que se enquadrem em pelo menos um dos seguintes eixos
+estudados na disciplina:
+• IA generativa e LLMs: Uso de assistentes para escrita, documentação
+e refatoração de código (ex.: GitHub Copilot, Amazon
+CodeWhisperer, etc.).
+• Manutenção Preditiva e Qualidade: Uso de modelos de ML para
+predição de defeitos (Defect Prediction), detecção de code smells ou
+análise de severidade (ex.: SonarQube, etc.).
+• Automação de testes: Uso de IA para automação de casos de teste
+ou ferramentas de regressão visual (ex.: Applitools, Testim, etc.).
+• Sistemas auto-adaptativos: Investigação de mecanismos de SelfHealing e autorreparo em produção.
+Apresentar no relatório compreensão crítica sobre benefícios, limitações,
+riscos éticos e desafios técnicos dessas tecnologias.
+
+Diretrizes para o Relatório
+• Escolha uma ou duas ferramentas reais baseadas em IA voltadas
+para uma das etapas do ciclo de vida de desenvolvimento de software
+(ex.: GitHub Copilot, Amazon CodeWhisperer, SonarQube com
+IA, Testim, Applitools, Diffblue, CodeScene, etc.).
+• Contextualize a ferramenta dentro de pelo menos um dos eixos da
+disciplina:
+o Geração/assistência de código com LLMs
+o Geração ou otimização de casos de teste
+o Detecção preditiva de bugs ou code smells
+o Sistemas de autorreparo ou auto-adaptação
+• Analise criticamente:
+o Como a IA é aplicada na ferramenta (ex.: modelo utilizado,
+tipo de dado, abordagem técnica)?
+o Quais ganhos reais ela traz para a produtividade, qualidade
+ou segurança do software?
+o Quais são suas limitações, riscos (ex.: viés, geração de
+código inseguro, dependência excessiva) ou desafios de
+adoção?
+o Há implicações éticas ou de propriedade intelectual
+envolvidas?
+• Demonstração prática: Inclua uma pequena demonstração prática
+(ex.: uso do GitHub Copilot para gerar testes; análise de relatório
+do SonarQube em um repositório público; comparação de cobertura
+de teste com/sem IA, etc.). A demonstração prática pode ser
+baseada em um repositório público (ex.: GitHub), em um
+experimento controlado com código simples, ou na análise de
+relatórios gerados por ferramentas gratuitas. Não é necessário
+desenvolvimento de software complexo.
+
+DESENVOLVIMENTO DO RELATÓRIO
+
+O relatório deve ser redigido em formato de artigo científico curto. A
+estrutura deve contemplar (cada item ser uma seção do artigo):
+• Introdução: Contextualização da ferramenta no paradigma IAES
+(IA na Engenharia de Software). Explique em qual fase do SDLC
+ela se aplica (Planejamento, Teste, Manutenção, etc.)
+• Fundamentação Teórica: Breve explicação da tecnologia de IA
+utilizada. Descrever sua contextualização no eixo da disciplina (ex.:
+Ela utiliza Aprendizado Supervisionado (Classificação ou
+Regressão)? É baseada em modelos Transformers?, etc.). Rigor
+acadêmico na citação de fontes e fundamentação dos conceitos
+discutidos no curso.
+• Análise Prática ou Estudo de Caso: Descreva um cenário de uso
+real ou experimental. Discussão sobre como a ferramenta altera a
+eficiência no ciclo de vida de desenvolvimento de software.
+Descrever as respostas às questões levantadas na análise crítica.
+• Desafios e Ética: Reflexão sobre as limitações da ferramenta e os
+desafios éticos de sua implementação em ambientes de produção.
+Discuta os riscos de segurança (vulnerabilidades no código gerado)
+e privacidade de dados no uso dessas ferramentas
+• Conclusão e argumentação sobre as tendências futuras da
+ferramenta escolhida. Sintetize como a ferramenta altera o papel do
+Engenheiro de Software moderno, como está transformando — ou
+ainda falha em transformar — a prática da Engenharia de Software.
+• Referências: Cite as fontes utilizadas seguindo a norma ABNT.
+
+FORMATO E DATA DE ENTREGA
+O artigo deve conter no máximo 8 páginas.
+Ser entregue arquivo em formato PDF.
+Entrega dia 19/02/2026 (alterado para 02/03/2026)

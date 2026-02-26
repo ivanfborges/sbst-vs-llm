@@ -1,0 +1,84 @@
+package com.example;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class TriangleClassifierTest {
+
+    @Test
+    public void classify_shouldReturnInvalid_whenAnySideIsZero() {
+        assertEquals(TriangleClassifier.TriangleType.INVALID,
+                TriangleClassifier.classify(0, 5, 7));
+    }
+
+    @Test
+    public void classify_shouldReturnInvalid_whenAnySideIsNegative() {
+        assertEquals(TriangleClassifier.TriangleType.INVALID,
+                TriangleClassifier.classify(-1, 5, 7));
+    }
+
+    @Test
+    public void classify_shouldReturnInvalid_whenTriangleInequalityIsViolated_equalCase() {
+        // x + y == z => inválido (borda)
+        assertEquals(TriangleClassifier.TriangleType.INVALID,
+                TriangleClassifier.classify(1, 2, 3));
+    }
+
+    @Test
+    public void classify_shouldReturnInvalid_whenTriangleInequalityIsViolated_strictLessCase() {
+        // x + y < z => inválido
+        assertEquals(TriangleClassifier.TriangleType.INVALID,
+                TriangleClassifier.classify(1, 2, 4));
+    }
+
+    @Test
+    public void classify_shouldReturnEquilateral_whenAllSidesEqual() {
+        assertEquals(TriangleClassifier.TriangleType.EQUILATERAL,
+                TriangleClassifier.classify(7, 7, 7));
+    }
+
+    @Test
+    public void classify_shouldReturnIsosceles_whenExactlyTwoSidesEqual_andNotRight() {
+        // após ordenação: 5,5,8 => não é retângulo e é isósceles
+        assertEquals(TriangleClassifier.TriangleType.ISOSCELES,
+                TriangleClassifier.classify(5, 8, 5));
+    }
+
+    @Test
+    public void classify_shouldReturnScalene_whenAllSidesDifferent_andNotRight() {
+        // 4,5,6 => válido, não retângulo, escaleno
+        assertEquals(TriangleClassifier.TriangleType.SCALENE,
+                TriangleClassifier.classify(4, 6, 5));
+    }
+
+    @Test
+    public void classify_shouldReturnRight_whenClassic345Triangle_inAnyOrder() {
+        assertEquals(TriangleClassifier.TriangleType.RIGHT,
+                TriangleClassifier.classify(3, 4, 5));
+    }
+
+    @Test
+    public void classify_shouldReturnRight_whenClassic51213Triangle_inAnyOrder() {
+        assertEquals(TriangleClassifier.TriangleType.RIGHT,
+                TriangleClassifier.classify(12, 5, 13));
+    }
+
+    @Test
+    public void classify_shouldReturnRight_evenIfAlsoIsosceles_like_1_1_sqrt2Scaled() {
+        // 1,1,? não fecha com int; use 5,5, (int) sqrt(50) não é inteiro.
+        // Em vez disso, garante que um candidato isósceles "quase" não seja classificado como RIGHT.
+        // 1,1,2 seria inválido, então usamos 2,2,3 (não é retângulo).
+        assertEquals(TriangleClassifier.TriangleType.ISOSCELES,
+                TriangleClassifier.classify(2, 2, 3));
+    }
+
+    @Test
+    public void classify_shouldNotOverflow_whenSquaresAreLarge_andReturnScalene() {
+        // Garante passagem pelo bloco de long (xx,yy,zz) sem overflow.
+        // 30000^2 + 40000^2 != 50000^2 (na verdade é), então ajusta para não ser retângulo.
+        // 30000, 40000, 50001 => válido e não retângulo.
+        assertEquals(TriangleClassifier.TriangleType.SCALENE,
+                TriangleClassifier.classify(30000, 40000, 50001));
+    }
+}
