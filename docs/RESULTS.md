@@ -27,8 +27,8 @@ of test redundancy or productivity: PIT selects tests per mutant, and the
 suites have different numbers of JUnit cases. See PIT's
 [basic concepts](https://pitest.org/quickstart/basic_concepts/).
 
-The target source hash matches in both arms and the preserved source copy:
-`608ede144bb4b03661e592ae53bbb8c0f1ba124dc980f7e21bfc9c41695516f1`.
+The target source hash (SHA256 after normalizing CRLF to LF) matches in both arms and the preserved source copy:
+`ad290ecca146e3910258998e460e60d270f4442423b5b313698f94b1e8ad2726`.
 The current suite files also match their evidence copies byte for byte.
 EvoSuite's own `statistics.csv` records 19/19 BRANCH goals for its generation
 criterion; JaCoCo separately records 17/18 branches. These are different tool

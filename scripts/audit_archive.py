@@ -16,7 +16,8 @@ ARCHIVE = {
 
 
 def sha(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    """Hash text with canonical LF to match Git blobs on Windows and Linux."""
+    return hashlib.sha256(path.read_bytes().replace(bytes([13, 10]), bytes([10]))).hexdigest()
 
 
 def metrics(side, folder):

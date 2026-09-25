@@ -29,8 +29,8 @@ Python 3.11 ou posterior; apenas biblioteca padrão:
 python scripts/audit_archive.py
 ```
 
-O script lê os arquivos versionados. Confere hash da classe alvo, contagens
-Surefire, JaCoCo e PIT, e confronta as execuções do log PIT com o XML
+O script lê os arquivos versionados. Confere hashes com LF normalizado entre sistemas, lê as contagens
+Surefire, JaCoCo e PIT e confronta as execuções do log PIT com o XML
 correspondente. Não executa Java, EvoSuite, LLM ou experimento novo. Compare a
 saída com `docs/archive-audit.json`.
 

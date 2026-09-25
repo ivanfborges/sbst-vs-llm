@@ -30,8 +30,8 @@ Python 3.11 or later, standard library only:
 python scripts/audit_archive.py
 ```
 
-The script reads the committed archives. It checks the target source hash in
-both arms, parses test counts, JaCoCo counters and PIT statuses, and verifies
+The script reads the committed archives. It checks LF-normalized hashes across operating systems, reads Surefire,
+JaCoCo and PIT totals from both arms, and verifies
 the archived PIT log's test-execution count against its XML. It does not run
 Java, EvoSuite, an LLM, or a new experiment. Compare its output with
 `docs/archive-audit.json`.

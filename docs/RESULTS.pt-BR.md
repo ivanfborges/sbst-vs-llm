@@ -26,8 +26,8 @@ sobreviventes. A tabela usa a cópia vinculada ao log. Nenhuma dessas contagens
 mede redundância ou produtividade: o PIT escolhe testes por mutante e as suítes
 têm tamanhos diferentes. Veja os [conceitos do PIT](https://pitest.org/quickstart/basic_concepts/).
 
-O hash da classe alvo é idêntico nos dois projetos e na cópia de evidências:
-`608ede144bb4b03661e592ae53bbb8c0f1ba124dc980f7e21bfc9c41695516f1`.
+O hash da classe alvo (SHA256 após normalizar CRLF para LF) é idêntico nos dois projetos e na cópia de evidências:
+`ad290ecca146e3910258998e460e60d270f4442423b5b313698f94b1e8ad2726`.
 As suítes atuais também são idênticas, byte a byte, às cópias do acervo.
 `statistics.csv` do EvoSuite registra 19/19 objetivos BRANCH na geração;
 JaCoCo registra separadamente 17/18 branches. São medidas distintas.

@@ -1,0 +1,19 @@
+name: Archived evidence audit
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify archived evidence against published summary
+        run: |
+          python scripts/audit_archive.py > /tmp/archive-audit.json
+          diff -u docs/archive-audit.json /tmp/archive-audit.json
