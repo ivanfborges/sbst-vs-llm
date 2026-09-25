@@ -1,5 +1,7 @@
 # Tabela comparativa de resultados — EvoSuite vs LLM
 
+> **Correção editorial (25/09/2026):** este quadro é histórico. Os arquivos de evidência e o log PIT de 26/02/2026 registram **75**, e não 83, execuções de testes para a suíte LLM; `reports/llm/pit/mutations.xml` é outra cópia com 83. Os escores de mutação são iguais nas duas cópias. O quadro também confunde esse total com redundância e atribui superioridade geral a partir de uma classe e uma suíte refinada com feedback do PIT. Consulte os [resultados auditados](../../docs/RESULTS.pt-BR.md) antes de usar seus números ou conclusões.
+
 ## Contexto
 Este arquivo resume os resultados do experimento de geração de testes unitários para a classe `TriangleClassifier`, comparando:
 
