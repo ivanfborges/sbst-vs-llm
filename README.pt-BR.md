@@ -2,7 +2,7 @@
 
 [English](README.md) · [README acadêmico original](docs/ACADEMIC-ORIGINAL.pt-BR.md)
 
-Estudo prático de uma disciplina da pós-graduação em Engenharia de Software.
+Estudo prático de uma disciplina de pós-graduação na área de Engenharia de Software.
 Duas suítes testam a **mesma** classe `TriangleClassifier`: uma gerada pelo
 EvoSuite e outra criada com apoio de LLM e depois refinada com feedback de
 mutações do PIT. A classe alvo tem os mesmos bytes nos dois projetos Maven.
